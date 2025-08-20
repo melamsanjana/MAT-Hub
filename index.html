@@ -1,427 +1,642 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>MAT-Hub | Smarter Marketing. Bigger Impact.</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --primary: #1976d2;
-      --primary-dark: #154590;
-      --accent: #23a6d5;
-      --bg: #f6f9fe;
-      --glass: rgba(255,255,255,0.70);
-      --glass-border: rgba(25,118,210,.13);
-      --shadow: 0 8px 32px 0 rgba(25, 118, 210, 0.15), 0 1.5px 4px 0 rgba(35,166,213,0.04);
-      --radius: 22px;
-      --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
-      --hero-gradient: linear-gradient(110deg, #1976d2 0%, #23a6d5 67%, #6ebaf9 100%);
-    }
-    html, body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--bg);
-      color: #172233;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAT-Hub - Smarter Marketing. Bigger Impact.</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Hero Section */
-    .hero {
-      background: var(--hero-gradient);
-      color: #fff;
-      text-align: center;
-      padding: 88px 18px 66px 18px;
-      border-radius: 0 0 var(--radius) var(--radius);
-      position: relative;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-    .hero h1 {
-      font-size: 2.9em;
-      font-weight: 700;
-      letter-spacing: -2px;
-      margin: 0 0 19px 0;
-      text-shadow: 0 6px 32px rgba(25,118,210,0.10);
-    }
-    .hero p {
-      font-weight: 400;
-      font-size: 1.25em;
-      margin: 0 auto 44px auto;
-      color: #f3fbff;
-      max-width: 540px;
-      line-height: 1.5;
-      text-shadow: 0 2px 16px rgba(25,134,255,0.16);
-    }
-    .cta-row {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 20px 0 0 0;
-    }
-    .btn {
-      font-family: inherit;
-      font-weight: 600;
-      font-size: 1.18em;
-      padding: 13px 38px;
-      border-radius: 30px;
-      background: var(--glass);
-      color: var(--primary-dark);
-      border: 2px solid #fff4;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.09);
-      cursor: pointer;
-      text-decoration: none;
-      transition: var(--transition);
-      margin-bottom: 10px;
-    }
-    .btn.primary {
-      background: linear-gradient(95deg, #fff 0%, #daf0ff 85%);
-      color: var(--primary-dark);
-      border-color: #e6effd;
-    }
-    .btn.primary:hover {
-      background: #fff;
-      color: var(--primary);
-      transform: translateY(-2px) scale(1.037);
-      box-shadow: 0 4px 18px var(--primary-dark, #154590, 0.18);
-    }
-    .btn.secondary {
-      background: var(--glass);
-      color: #fff;
-      border-color: #ffffff44;
-    }
-    .btn.secondary:hover {
-      background: rgba(35,166,213,0.24);
-      color: #fff;
-      transform: translateY(-1px) scale(1.04);
-      border-color: #daf0ff;
-    }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
 
-    /* Main Container */
-    .container {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 38px 20px 0 20px;
-    }
-    section:not(.hero-section) {
-      margin-bottom: 36px;
-    }
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-    h2 {
-      color: var(--primary);
-      font-size: 2.16em;
-      font-weight: 700;
-      text-align: center;
-      margin-bottom: 26px;
-      letter-spacing: -0.5px;
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
 
-    /* GLASSMORPHISM CARD STYLE */
-    .glass-wrap {
-      display: flex;
-      gap: 32px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin: 0 -5px;
-    }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            -webkit-text-fill-color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
 
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(20px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border: 1.7px solid var(--glass-border);
-      margin-bottom: 22px;
-      padding: 34px 26px 28px 26px;
-      min-width: 242px;
-      max-width: 345px;
-      flex: 1 1 284px;
-      transition: transform 0.17s, box-shadow 0.19s;
-      position: relative;
-      color: #172233;
-      z-index: 1;
-    }
+        .logo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
 
-    .glass-card.popular {
-      border: 2.6px solid var(--primary);
-      transform: scale(1.045);
-      z-index: 2;
-      box-shadow: 0 8px 40px 0 rgba(25,118,210,0.20), var(--shadow);
-      background: rgba(255,255,255,0.86);
-    }
-    .glass-card:hover {
-      transform: scale(1.027) translateY(-6px);
-      box-shadow: 0 14px 44px 0 rgba(25,118,210,0.18);
-    }
-    .glass-card h3 {
-      margin: 1px 0 10px 0;
-      color: var(--primary);
-      font-size: 1.19em;
-      font-weight: bold;
-      letter-spacing: -0.3px;
-    }
-    .glass-card .price {
-      font-size: 2em;
-      font-weight: 700;
-      color: var(--primary-dark);
-      margin-bottom: 15px;
-      margin-top: 4px;
-    }
-    .glass-card ul {
-      padding: 0;
-      margin: 14px 0 25px 0;
-      list-style: none;
-    }
-    .glass-card ul li {
-      font-size: 1.06em;
-      margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-    .glass-card ul li::before {
-      content: "✓";
-      color: var(--primary);
-      font-weight: bold;
-      font-size: 1.13em;
-    }
-    .glass-card .btn {
-      margin-top: 6px;
-    }
-    /* Features & About */
-    .list-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 26px;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-top: 17px;
-      margin-bottom: 12px;
-    }
-    .list-section ul {
-      background: var(--glass);
-      border-radius: 16px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 2px 13px rgba(25,118,210,0.07);
-      border: 1.1px solid var(--glass-border);
-      padding: 23px 32px;
-      min-width: 220px;
-      max-width: 480px;
-      flex: 1;
-    }
-    .list-section li {
-      font-size: 1.12em;
-      margin-bottom: 10px;
-      padding-left: 0;
-      color: #174266;
-      letter-spacing: 0.2px;
-      line-height: 1.52;
-      position: relative;
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-    }
-    .list-section li::before {
-      content: "•";
-      color: var(--primary);
-      font-size: 1.3em;
-      line-height: 1;
-      margin-right: 5px;
-    }
-    /* Why Choose Section */
-    .why-mat-hub ul {
-      background: var(--glass);
-      border-radius: 14px;
-      padding: 25px 35px;
-      max-width: 530px;
-      margin: 0 auto 0 auto;
-      border: 1.1px solid var(--glass-border);
-      backdrop-filter: blur(12px);
-    }
-    .why-mat-hub li {
-      font-size: 1.14em;
-      margin-bottom: 13px;
-      position: relative;
-      padding-left: 2px;
-      color: #174266;
-    }
-    .why-mat-hub li:before {
-      content: "✔";
-      color: var(--accent);
-      font-weight: bold;
-      font-size: 1.13em;
-      margin-right: 8px;
-      display: inline-block;
-      width: 1.1em;
-    }
-    /* Contact */
-    .contact-section {
-      text-align: center;
-    }
-    .contact-list {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-bottom: 16px;
-      padding-left: 0;
-    }
-    .contact-list li {
-      background: #e3f0fb;
-      color: var(--primary);
-      border-radius: 6px;
-      padding: 5px 14px;
-      font-size: 1.01em;
-      margin-bottom: 7px;
-      display: inline-block;
-    }
-    #contact-form {
-      margin: 0 auto;
-      max-width: 365px;
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-      margin-top: 9px;
-    }
-    #contact-form input, #contact-form textarea {
-      font-family: inherit;
-      font-size: 1em;
-      padding: 11px 12px;
-      border-radius: 7px;
-      border: 1.5px solid #d6eaff;
-      resize: vertical;
-      background: #fafdff;
-      transition: border 0.2s;
-    }
-    #contact-form input:focus, #contact-form textarea:focus {
-      border-color: var(--accent);
-      outline: none;
-    }
-    #contact-form textarea { min-height: 78px; max-height: 200px; }
-    #contact-form button { margin-top: 5px; }
-    /* Responsive */
-    @media (max-width: 1100px) {
-      .container { padding: 34px 9px; }
-      .list-section { flex-direction: column; gap:18px; }
-    }
-    @media (max-width: 700px) {
-      .glass-wrap { flex-direction: column; gap: 22px; }
-      .list-section ul { padding: 18px 17px; }
-    }
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 1.57em; }
-      h2 { font-size: 1.17em; }
-      .glass-card, .glass-card.popular { padding: 18px 4px 18px 4px; }
-      section { padding: 12px 0; }
-      .why-mat-hub ul { padding: 15px 7px; }
-    }
-  </style>
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 600px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            transform: translateY(0);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-5px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8fafc;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .mission-list {
+            list-style: none;
+            margin: 2rem 0;
+            padding: 0;
+        }
+
+        .mission-list li {
+            margin: 1rem 0;
+            padding: 1rem 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .mission-list li:hover {
+            transform: translateY(-5px);
+        }
+
+        .mission-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 1rem;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+            background: white;
+            color: #333;
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .price-features li {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .price-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #4ade80;
+            font-weight: bold;
+        }
+
+        /* Why Choose Section */
+        .why-choose {
+            background: #f8fafc;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2rem;
+            color: #667eea;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-
-  <div class="hero">
-    <h1>Smarter Marketing. Bigger Impact.</h1>
-    <p>MAT-Hub helps startups, e-commerce brands, and digital platforms convert more visitors into customers with targeted and hyper-personalized ads — without the complexity.</p>
-    <div class="cta-row">
-      <a href="#contact" class="btn primary">Get Started</a>
-      <a href="#contact" class="btn secondary">Request Demo</a>
-    </div>
-  </div>
-
-  <div class="container">
-    <!-- About & Our Mission -->
-    <section>
-      <h2>About Us</h2>
-      <div class="list-section">
-        <ul>
-          <li>We are a team passionate about the future of <b>MadTech (Marketing + Advertising + Technology)</b>.</li>
-          <li>Our mission is simple: Reduce manual effort, deliver smart personalization, and help companies grow ROI through advanced ad targeting.</li>
-          <li>MAT-Hub isn’t just another marketing tool — <b>it’s your growth partner.</b></li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section>
-      <h2>Features & Services</h2>
-      <div class="list-section">
-        <ul class="features-list">
-          <li><b>Targeted Ads:</b> Reach the right customer at the right time</li>
-          <li><b>Hyper-Personalization:</b> Ads tailored to customer behavior</li>
-          <li><b>Multi-Platform Campaigns:</b> Run campaigns across web & apps seamlessly</li>
-          <li><b>Analytics Dashboard:</b> Track ROI, conversions, and customer insights in real time</li>
-          <li><b>Easy to Use:</b> Plug-and-play growth with no complicated setups</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- Pricing -->
-    <section>
-      <h2>Pricing Plans</h2>
-      <div class="glass-wrap">
-        <div class="glass-card">
-          <h3>Basic</h3>
-          <div class="price">₹2,999 / month</div>
-          <ul>
-            <li>Limited ad campaigns</li>
-            <li>Basic personalization</li>
-            <li>Standard analytics</li>
-          </ul>
-          <a href="#contact" class="btn primary">Start Basic</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">MAT-Hub</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-        <div class="glass-card popular">
-          <h3>Growth</h3>
-          <div class="price">₹9,999 / month</div>
-          <ul>
-            <li>More campaigns</li>
-            <li>Advanced analytics</li>
-            <li>Multi-user access</li>
-          </ul>
-          <a href="#contact" class="btn primary">Start Growth</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Smarter Marketing. Bigger Impact.</h1>
+                <p>MAT-Hub helps startups, e-commerce brands, and digital platforms convert more visitors into customers with targeted and hyper-personalized ads — without the complexity.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                    <a href="#contact" class="btn btn-secondary">Request Demo</a>
+                </div>
+            </div>
         </div>
-        <div class="glass-card">
-          <h3>Pro</h3>
-          <div class="price">Custom Pricing</div>
-          <ul>
-            <li>Unlimited campaigns</li>
-            <li>API integrations</li>
-            <li>Dedicated support</li>
-          </ul>
-          <a href="#contact" class="btn primary">Contact Sales</a>
-        </div>
-      </div>
     </section>
 
-    <!-- Why MAT-Hub -->
-    <section class="why-mat-hub">
-      <h2>Why Choose MAT-Hub?</h2>
-      <ul>
-        <li>Saves time & effort — no more manual ad setups</li>
-        <li>Improves ROI — every rupee spent brings higher returns</li>
-        <li>Easy integration — works with your website/app instantly</li>
-        <li>Scales with your business — from startup to enterprise</li>
-      </ul>
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title fade-in">About Us</h2>
+            <div class="about-content fade-in">
+                <p>We are a team passionate about the future of MadTech (Marketing + Advertising + Technology).</p>
+                <p><strong>Our mission is simple:</strong></p>
+                <ul class="mission-list">
+                    <li>Reduce the manual effort businesses spend on marketing</li>
+                    <li>Deliver smart, data-driven personalization</li>
+                    <li>Help companies grow their ROI through advanced ad targeting</li>
+                </ul>
+                <p style="font-size: 1.3rem; font-weight: 600; color: #667eea; margin-top: 2rem;">
+                    MAT-Hub isn't just another marketing tool — it's your growth partner.
+                </p>
+            </div>
+        </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <h2>Ready to grow faster?</h2>
-      <p style="font-size:1.09em"><b>Get Early Access</b> / <b>Contact Us</b></p>
-      <ul class="contact-list">
-        <li>Email: <a href="mailto:info@mat-hub.com">info@mat-hub.com</a></li>
-        <li>LinkedIn: (Add your LinkedIn URL)</li>
-      </ul>
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Email" required>
-        <textarea name="message" placeholder="How can we help you?" required></textarea>
-        <button type="submit" class="btn primary">Send Message</button>
-      </form>
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title fade-in">Features & Services</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Targeted Ads</h3>
+                    <p>Reach the right customer at the right time with precision targeting that maximizes your ad spend efficiency.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Hyper-Personalization</h3>
+                    <p>Deliver ads tailored to customer behavior and preferences for higher engagement and conversion rates.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Multi-Platform Campaigns</h3>
+                    <p>Run seamless campaigns across web and mobile apps with unified management and reporting.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">📊</div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Track ROI, conversions, and customer insights in real-time with comprehensive analytics and reporting.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Easy to Use</h3>
+                    <p>No complicated setups, just plug-and-play growth solutions that get you started in minutes.</p>
+                </div>
+            </div>
+        </div>
     </section>
-  </div>
-</body>
-</html>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section pricing">
+        <div class="container">
+            <h2 class="section-title fade-in" style="color: white;">Pricing Plans</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <h3>Basic</h3>
+                    <div class="price">₹2999<span style="font-size: 1rem; opacity: 0.7;">/month</span></div>
+                    <p>Perfect for startups</p>
+                    <ul class="price-features">
+                        <li>Limited ad campaigns</li>
+                        <li>Basic personalization</li>
+                        <li>Standard analytics</li>
+                        <li>Email support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Started</a>
+                </div>
+                <div class="pricing-card featured fade-in">
+                    <h3>Growth</h3>
+                    <div class="price">₹9999<span style="font-size: 1rem; opacity: 0.7;">/month</span></div>
+                    <p>For SMBs & e-commerce</p>
+                    <ul class="price-features">
+                        <li>More campaigns</li>
+                        <li>Advanced analytics</li>
+                        <li>Multi-user access</li>
+                        <li>Priority support</li>
+                        <li>API integrations</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Get Started</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <h3>Pro</h3>
+                    <div class="price">Custom<span style="font-size: 1rem; opacity: 0.7;"> Pricing</span></div>
+                    <p>For enterprises & e-learning platforms</p>
+                    <ul class="price-features">
+                        <li>Unlimited campaigns</li>
+                        <li>API integrations</li>
+                        <li>Dedicated support</li>
+                        <li>Custom features</li>
+                        <li>White-label options</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; justify-content: center;">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="section why-choose">
+        <div class="container">
+            <h2 class="section-title fade-in">Why Choose MAT-Hub?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">⏰</div>
+                    <div>
+                        <h3>Saves Time & Effort</h3>
+                        <p>No more manual ad setups. Automate your marketing processes and focus on growing your business.</p>
+                    </div>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">📈</div>
+                    <div>
+                        <h3>Improves ROI</h3>
+                        <p>Every rupee spent brings higher returns through smart targeting and optimization algorithms.</p>
+                    </div>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">🔗</div>
+                    <div>
+                        <h3>Easy Integration</h3>
+                        <p>Works with your website and app instantly with simple integration and setup process.</p>
+                    </div>
+                </div>
+                <div class="benefit-item fade-in">
+                    <div class="benefit-icon">🚀</div>
+                    <div>
+                        <h3>Scales with Business</h3>
+                        <p>From startup to enterprise, our 
