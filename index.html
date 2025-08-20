@@ -2,109 +2,351 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MAT-Hub | Smarter Marketing. Bigger Impact.</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Modern Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1976d2;
+      --secondary: #171a21;
+      --accent: #23a6d5;
+      --background: #f7fafc;
+      --shadow: 0 4px 40px rgba(25,118,210,.08);
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      margin: 0;
+      background: var(--background);
+      color: var(--secondary);
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 16px;
+    }
+    /* HERO */
+    .hero {
+      background: linear-gradient(90deg, var(--primary) 55%, var(--accent) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 66px 14px 50px 14px;
+      border-radius: 0 0 34px 34px;
+      box-shadow: var(--shadow);
+      margin-bottom: 36px;
+    }
+    .hero img {
+      max-width: 110px;
+      background: #fff;
+      border-radius: 14px;
+      margin-bottom: 15px;
+      padding: 8px;
+      box-shadow: 0 2px 12px rgba(25,118,210,0.10);
+    }
+    .hero h1 {
+      font-size: 2.7em;
+      margin-bottom: 13px;
+      font-weight: 700;
+      letter-spacing: -1px;
+      line-height: 1.08;
+    }
+    .hero p {
+      font-size: 1.18em;
+      margin-bottom: 36px;
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #e3f0fb;
+    }
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: #fff;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.12em;
+      padding: 12px 34px;
+      border: none;
+      border-radius: 24px;
+      text-decoration: none;
+      margin-bottom: 8px;
+      transition: 0.2s;
+      box-shadow: 0 2px 12px rgba(25, 118, 210, 0.06);
+      cursor: pointer;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      margin-left: 5px;
+    }
+    .btn:hover, .btn.secondary:hover {
+      background: var(--secondary);
+      color: #fff;
+      border-color: var(--secondary);
+    }
+
+    /* Sections */
+    section {
+      background: #fff;
+      margin-bottom: 32px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 30px 0;
+    }
+    h2 {
+      color: var(--primary);
+      text-align: center;
+      font-size: 2.1em;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+      font-weight: 700;
+    }
+    /* About & Features */
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .features-list li, .about-list li {
+      font-size: 1.12em;
+      margin-bottom: 11px;
+      position: relative;
+      padding-left: 27px;
+    }
+    .features-list li::before,
+    .about-list li::before {
+      position: absolute;
+      left: 0;
+      font-size: 1.3em;
+      color: var(--primary);
+    }
+    .features-list li::before {
+      content: "🔹";
+    }
+    .about-list li::before {
+      content: "•";
+    }
+    /* Pricing Cards */
+    .pricing-cards {
+      display: flex;
+      gap: 22px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    .card {
+      background: #f5faff;
+      border-radius: 13px;
+      box-shadow: 0 2px 16px rgba(25,118,210,0.10);
+      padding: 24px 16px 26px 16px;
+      text-align: center;
+      flex: 1 1 220px;
+      min-width: 220px;
+      max-width: 320px;
+      margin-bottom: 13px;
+      transition: transform 0.14s;
+    }
+    .card.popular {
+      border: 2.5px solid var(--primary);
+      box-shadow: 0 7px 32px rgba(25,118,210,0.15);
+      z-index: 1;
+      transform: scale(1.04);
+    }
+    .card h3 {
+      margin: 4px 0 8px 0;
+      color: var(--primary);
+      font-size: 1.21em;
+    }
+    .price {
+      font-size: 2em;
+      font-weight: bold;
+      color: var(--secondary);
+      margin-bottom: 16px;
+      margin-top: 6px;
+    }
+    .card ul {
+      margin: 9px 0 23px 0;
+    }
+    .card ul li {
+      font-size: 1.02em;
+      margin-bottom: 9px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .card ul li:before {
+      content: "✓";
+      color: var(--primary);
+      position: absolute;
+      left: 0;
+    }
+    .pricing-cards .btn { margin-top: 1px; }
+    /* Why Choose */
+    .why-mat-hub ul li {
+      font-size: 1.12em;
+      margin-bottom: 13px;
+      position: relative;
+      padding-left: 30px;
+    }
+    .why-mat-hub ul li:before {
+      content: "✔";
+      color: var(--accent);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+      font-size: 1.2em;
+    }
+    /* Contact */
+    .contact { text-align: center; }
+    .contact-list {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin: 18px 0 12px 0;
+      padding-left: 0;
+    }
+    .contact-list li {
+      background: #e3f0fb;
+      color: var(--primary);
+      border-radius: 6px;
+      padding: 5px 13px;
+      font-size: 1em;
+      margin-bottom: 7px;
+    }
+    #contact-form {
+      margin: 0 auto;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    #contact-form input, #contact-form textarea {
+      font-family: inherit;
+      font-size: 1em;
+      padding: 10px 12px;
+      border-radius: 7px;
+      border: 1.5px solid #d6eaff;
+      resize: vertical;
+      background: #fafdff;
+    }
+    #contact-form textarea { min-height: 78px; max-height: 200px; }
+    #contact-form button { margin-top: 4px; }
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .pricing-cards { flex-direction: column; align-items: center; }
+      .card { max-width: 92%; }
+      .container { padding: 22px 8px; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.43em; }
+      h2 { font-size: 1.2em; }
+      .card { padding: 10px 4px 12px 4px; }
+      section { padding: 15px 0; }
+    }
+  </style>
 </head>
 <body>
   <!-- Hero Section -->
-  <section class="hero">
+  <div class="hero">
+    <img src="IMG-20250820-WA0008.jpg" alt="MAT-Hub Logo">
     <h1>Smarter Marketing. Bigger Impact.</h1>
     <p>MAT-Hub helps startups, e-commerce brands, and digital platforms convert more visitors into customers with targeted and hyper-personalized ads — without the complexity.</p>
     <div class="cta-buttons">
-      <a href="#contact" class="btn primary">Get Started</a>
+      <a href="#contact" class="btn">Get Started</a>
       <a href="#contact" class="btn secondary">Request Demo</a>
     </div>
-  </section>
-
-  <!-- About Us -->
-  <section class="about" id="about">
-    <h2>About Us</h2>
-    <p>We are a team passionate about the future of MadTech (Marketing + Advertising + Technology).</p>
-    <ul>
-      <li>Reduce the manual effort businesses spend on marketing</li>
-      <li>Deliver smart, data-driven personalization</li>
-      <li>Help companies grow their ROI through advanced ad targeting</li>
-    </ul>
-    <p><strong>MAT-Hub isn’t just another marketing tool — it’s your growth partner.</strong></p>
-  </section>
-
-  <!-- Features / Services -->
-  <section class="features" id="features">
-    <h2>Features & Services</h2>
-    <ul>
-      <li>🔹 <strong>Targeted Ads</strong> – Reach the right customer at the right time</li>
-      <li>🔹 <strong>Hyper-Personalization</strong> – Deliver ads tailored to customer behavior</li>
-      <li>🔹 <strong>Multi-Platform Campaigns</strong> – Run campaigns across web & apps seamlessly</li>
-      <li>🔹 <strong>Analytics Dashboard</strong> – Track ROI, conversions, and customer insights in real time</li>
-      <li>🔹 <strong>Easy to Use</strong> – No complicated setups, just plug-and-play growth</li>
-    </ul>
-  </section>
-
-  <!-- Pricing -->
-  <section class="pricing" id="pricing">
-    <h2>Pricing</h2>
-    <div class="plans">
-      <div class="plan">
-        <h3>Basic</h3>
-        <p class="price">₹999 / month</p>
-        <ul>
-          <li>Limited ad campaigns</li>
-          <li>Basic personalization</li>
-          <li>Standard analytics</li>
-        </ul>
-        <a href="#contact" class="btn">Choose Basic</a>
+  </div>
+  <div class="container">
+    <!-- About Us -->
+    <section id="about">
+      <h2>About Us</h2>
+      <ul class="about-list">
+        <li>We are a team passionate about the future of <b>MadTech (Marketing + Advertising + Technology)</b>.</li>
+        <li>Reduce the manual effort businesses spend on marketing</li>
+        <li>Deliver smart, data-driven personalization</li>
+        <li>Help companies grow their ROI through advanced ad targeting</li>
+      </ul>
+      <p style="margin-top:17px;font-weight:700;text-align:center;">MAT-Hub isn’t just another marketing tool — <span style="color:var(--primary);">it’s your growth partner.</span></p>
+    </section>
+    <!-- Features -->
+    <section id="features">
+      <h2>Features & Services</h2>
+      <ul class="features-list">
+        <li><b>Targeted Ads:</b> Reach the right customer at the right time</li>
+        <li><b>Hyper-Personalization:</b> Deliver ads tailored to customer behavior</li>
+        <li><b>Multi-Platform Campaigns:</b> Run campaigns across web & apps seamlessly</li>
+        <li><b>Analytics Dashboard:</b> Track ROI, conversions, and customer insights in real time</li>
+        <li><b>Easy to Use:</b> No complicated setups, just plug-and-play growth</li>
+      </ul>
+    </section>
+    <!-- Pricing -->
+    <section id="pricing">
+      <h2>Pricing Plans</h2>
+      <div class="pricing-cards">
+        <div class="card">
+          <h3>Basic</h3>
+          <div class="price">₹2,999 / month</div>
+          <ul>
+            <li>Limited ad campaigns</li>
+            <li>Basic personalization</li>
+            <li>Standard analytics</li>
+          </ul>
+          <a href="#contact" class="btn">Start Basic</a>
+        </div>
+        <div class="card popular">
+          <h3>Growth</h3>
+          <div class="price">₹9,999 / month</div>
+          <ul>
+            <li>More campaigns</li>
+            <li>Advanced analytics</li>
+            <li>Multi-user access</li>
+          </ul>
+          <a href="#contact" class="btn">Start Growth</a>
+        </div>
+        <div class="card">
+          <h3>Pro</h3>
+          <div class="price">Custom Pricing</div>
+          <ul>
+            <li>Unlimited campaigns</li>
+            <li>API integrations</li>
+            <li>Dedicated support</li>
+          </ul>
+          <a href="#contact" class="btn">Contact Sales</a>
+        </div>
       </div>
-      <div class="plan">
-        <h3>Growth</h3>
-        <p class="price">₹2,999 / month</p>
-        <ul>
-          <li>More campaigns</li>
-          <li>Advanced analytics</li>
-          <li>Multi-user access</li>
-        </ul>
-        <a href="#contact" class="btn">Choose Growth</a>
-      </div>
-      <div class="plan">
-        <h3>Pro</h3>
-        <p class="price">Custom Pricing</p>
-        <ul>
-          <li>Unlimited campaigns</li>
-          <li>API integrations</li>
-          <li>Dedicated support</li>
-        </ul>
-        <a href="#contact" class="btn">Contact for Pro</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose MAT-Hub -->
-  <section class="why" id="why">
-    <h2>Why Choose MAT-Hub?</h2>
-    <ul>
-      <li>✔ Saves time & effort → No more manual ad setups</li>
-      <li>✔ Improves ROI → Every rupee spent brings higher returns</li>
-      <li>✔ Easy integration → Works with your website/app instantly</li>
-      <li>✔ Scales with your business → From startup to enterprise</li>
-    </ul>
-  </section>
-
-  <!-- Contact / CTA Section -->
-  <section class="contact" id="contact">
-    <h2>Ready to grow faster?</h2>
-    <div class="cta-buttons">
-      <a href="mailto:info@mat-hub.com" class="btn primary">Get Early Access</a>
-      <a href="mailto:info@mat-hub.com" class="btn secondary">Contact Us</a>
-    </div>
-    <div class="contact-info">
-      <p>Email: <a href="mailto:info@mat-hub.com">info@mat-hub.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/company/mat-hub" target="_blank">MAT-Hub</a></p>
-      <!-- Add other social handles as needed -->
-    </div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 MAT-Hub. All rights reserved.</p>
-  </footer>
+    </section>
+    <!-- Why Choose -->
+    <section class="why-mat-hub">
+      <h2>Why Choose MAT-Hub?</h2>
+      <ul>
+        <li>Saves time & effort — no more manual ad setups</li>
+        <li>Improves ROI — every rupee spent brings higher returns</li>
+        <li>Easy integration — works with your website/app instantly</li>
+        <li>Scales with your business — from startup to enterprise</li>
+      </ul>
+    </section>
+    <!-- Contact -->
+    <section id="contact" class="contact">
+      <h2>Ready to grow faster?</h2>
+      <p><b>Get Early Access</b> / <b>Contact Us</b></p>
+      <ul class="contact-list">
+        <li>Email: <a href="mailto:info@mat-hub.com">info@mat-hub.com</a></li>
+        <li>LinkedIn: (Add your LinkedIn URL)</li>
+      </ul>
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <textarea name="message" placeholder="How can we help you?" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+    </section>
+  </div>
 </body>
 </html>
